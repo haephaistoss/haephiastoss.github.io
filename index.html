@@ -1,51 +1,12 @@
-        </tbody>
-    </table>
-    <script>
-        const API_KEY = 'AIzaSyBhJiVI02_Jz7DlRuMml0jG0C3dEZBtY4U'; // Replace with your Google Sheets API key
-        const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/1WE-L7qPqHmBOV-0AlFLs7rf0kuL32nSDVahbPqL_aFE/edit#gid=0'; // Replace with your Google Sheets spreadsheet ID
-        const SHEET_NAME = 'Master'; // Replace with the name of the sheet containing the ranking data
-
-        function fetchRankingData() {
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    updateTable(data.values);
-                })
-                .catch(error => {
-                    console.error('Error fetching ranking data:', error);
-                });
-        }
-
-        function updateTable(data) {
-            const rankingBody = document.getElementById('ranking-body');
-            rankingBody.innerHTML = '';
-
-            for (let i = 0; i < data.length && i < 100; i++) {
-                const row = document.createElement('tr');
-
-                const rankCell = document.createElement('td');
-                rankCell.innerText = i + 1;
-                row.appendChild(rankCell);
-
-                const nameCell = document.createElement('td');
-                nameCell.innerText = data[i][0]; // Assuming the name is in the first column of the sheet
-                row.appendChild(nameCell);
-
-                const unitsSoldCell = document.createElement('td');
-                unitsSoldCell.innerText = data[i][1]; // Assuming the units sold are in the second column of the sheet
-                row.appendChild(unitsSoldCell);
-                rankingBody.appendChild(row);
-            }
-        }
-
-        // Fetch the ranking data when the page loads
-        fetchRankingData();
-
-        // Set the data to refresh every minute (60000 milliseconds)
-        setInterval(fetchRankingData, 60000);
-    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="600"> <!-- Refresh the page every 10 minutes (600 seconds) -->
+  <title>Google Slides Presentation</title>
+</head>
+<body>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRF97-zqbBI2rGC-7Y2R84-5Y4f0UuONMWGfQkmcm7cxjFPsr2WhcNB-VTM9Lbu69658e1ulL3i1SbB/embed?start=true&loop=true&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </body>
 </html>
-
-               

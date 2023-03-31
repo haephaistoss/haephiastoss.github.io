@@ -6,43 +6,24 @@
   <meta http-equiv="refresh" content="20"> <!-- Refresh the page every 10 minutes (600 seconds) -->
   <title>Google Slides Presentation</title>
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    body, html {
+      height: 100%;
       margin: 0;
       padding: 0;
       overflow: hidden;
     }
     
     iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
     }
   </style>
 </head>
 <body>
-  <iframe id="presentation" src="https://docs.google.com/presentation/d/e/2PACX-1vRF97-zqbBI2rGC-7Y2R84-5Y4f0UuONMWGfQkmcm7cxjFPsr2WhcNB-VTM9Lbu69658e1ulL3i1SbB/embed?start=true&loop=true&delayms=3000" width="1000" height="800" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-  
-  <script>
-    function enterFullscreen(iframe) {
-      if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-      } else if (iframe.mozRequestFullScreen) {
-        iframe.mozRequestFullScreen();
-      } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
-      }
-    }
-    
-    window.addEventListener('load', function() {
-      var presentation = document.getElementById('presentation');
-      setTimeout(function() {
-        enterFullscreen(presentation);
-      }, 500); // Add a delay before entering fullscreen mode (in milliseconds)
-    });
-  </script>
+  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRF97-zqbBI2rGC-7Y2R84-5Y4f0UuONMWGfQkmcm7cxjFPsr2WhcNB-VTM9Lbu69658e1ulL3i1SbB/embed?start=true&loop=true&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </body>
 </html>
